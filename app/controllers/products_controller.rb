@@ -5,13 +5,16 @@ class ProductsController < ApplicationController
 	end
 
 	def new
-		@categories = Product.joins(:categories)
+		@categories = Category.all
 	end
 
 	def create
 		new_product = Product.create(product_params)
-		category_tags = params[:category]
-		new_product.categories << category_tags
+		category_tags = params[:selected]
+		binding.pry
+		category_tags.each do |id|
+		new_product.categories << Category.find(id.to_i)
+		end
 		redirect_to product_path(new_product.id)
 	end
 
@@ -25,7 +28,7 @@ class ProductsController < ApplicationController
 	def edit
 		id = params[:id]
 		@product = Product.find(id)
-		@categories = @product.categories
+		@categories = Category.all
 	end
 
 	def update
@@ -39,7 +42,7 @@ class ProductsController < ApplicationController
 		id = params[:id]
 		product = Product.find(id)
 		product.destroy
-		redirect_to product_path
+		redirect_to products_path
 	end
 
 	private

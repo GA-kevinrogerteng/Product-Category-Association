@@ -5,5 +5,10 @@
 
 <%=label_tag(:description, "Description")%> <%= p.text_field :description, value: @product['description']%> <br>
 
+<% @categories.each do |c| %>
+		<%= check_box_tag(:category_id, c.id) %>
+		<%= label_tag(:category_id, c.name) %><br>
+<% end %>
+
 <%= p.submit "Edit Product" %>
 <% end %>

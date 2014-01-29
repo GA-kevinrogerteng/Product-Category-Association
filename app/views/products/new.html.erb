@@ -1,13 +1,13 @@
 <h2> New Product </h2>
 <%= form_for :product, method: :post, url: products_path do |p| %>
 
-<%=label_tag(:name, "Name")%> <%= p.text_field :name%> <br>
-<%=label_tag(:description, "Description")%> <%= p.text_field :description%> <br>
+	<%=label_tag(:name, "Name")%> <%= p.text_field :name%> <br>
+	<%=label_tag(:description, "Description")%> <%= p.text_field :description%> <br>
 
-<% @categories.each do |c| %>
-		<%= check_box_tag(:category) %>
-		<%= label_tag(:category, c.name) %><br>
-	<% end %>
+		<% @categories.each do |c| %>
+				<%= check_box_tag( 'selected[]', c.id) %>
+				<%= label_tag(c.name) %><br>
+		<% end %>
 
-<%= p.submit "Create Product" %>
+	<%= p.submit "Create Product" %>
 <% end %>
