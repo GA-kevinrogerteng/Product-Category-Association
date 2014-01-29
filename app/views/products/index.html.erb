@@ -1,0 +1,7 @@
+<%= link_to "Create A New Product", new_product_path %><br>
+
+<%= link_to "Main Page", sites_path %> <br>
+<br>
+<% @products.each do |p| %>
+<%= p.name %> <%p.description %> <%= link_to "View", product_path(p) %> <br>
+<% end %>

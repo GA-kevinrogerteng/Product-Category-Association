@@ -1,0 +1,8 @@
+<h2> Editing Category - <%= @category.name %> </h2>
+<%= form_for :category, method: :patch, url: category_path do |p| %>
+
+<%=label_tag(:name, "Name")%> <%= p.text_field :name, value: @category['name']%> <br>
+<%=label_tag(:description, "Description")%> <%= p.text_field :description, value: @category['description']%> <br>
+
+<%= p.submit "Edit Category" %>
+<% end %>

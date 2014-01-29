@@ -1,0 +1,7 @@
+<%= link_to "Create A New Category", new_category_path %><br>
+<%= link_to "Main Page", sites_path %> <br>
+<br>
+
+<% @categories.each do |c| %>
+<%= c.name %> <%c.description %> <%= link_to "View", category_path(c) %> <br>
+<% end %>

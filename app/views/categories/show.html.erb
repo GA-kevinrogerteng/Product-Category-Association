@@ -1,0 +1,10 @@
+Category Name: <%= @category['name'] %></br>
+Category Description: <%= @category['description']%> </br>
+<% @products.each do |p| %>
+Product Categories: 
+<li><%= p.name %> </li>
+<% end %>
+
+<%= link_to 'Edit', edit_category_path %> <br>
+<%= link_to 'Delete', category_path(@category['id']), method: :delete %> <br>
+<%= link_to "Back", categories_path %>

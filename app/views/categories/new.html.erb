@@ -1,0 +1,8 @@
+<h2> New category </h2>
+<%= form_for :category, method: :post, url: categories_path do |p| %>
+
+<%=label_tag(:name, "Name")%> <%= p.text_field :name%> <br>
+<%=label_tag(:description, "Description")%> <%= p.text_field :description%> <br>
+
+<%= p.submit "Create Category" %>
+<% end %>
