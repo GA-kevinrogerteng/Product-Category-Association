@@ -1,14 +1,18 @@
 <h2> Editing Product - <%=@product.name %> </h2>
+
+
 <%= form_for :product, method: :patch, url: product_path do |p| %>
 	
-<%=label_tag(:name, "Name")%> <%= p.text_field :name, value: @product['name']%> <br>
+	<%=label_tag(:name, "Name")%> <%= p.text_field :name, value: @product['name']%> <br>
 
-<%=label_tag(:description, "Description")%> <%= p.text_field :description, value: @product['description']%> <br>
+	<%=label_tag(:description, "Description")%> <%= p.text_field :description, value: @product['description']%> <br>
 
-<% @categories.each do |c| %>
-		<%= check_box_tag(:category_id, c.id) %>
-		<%= label_tag(:category_id, c.name) %><br>
-<% end %>
+		<% @categories.each do |c| %>
+			
+				<%= check_box_tag('selected[]', c.id) %>
+				<%= label_tag(c.name) %><br>
+				
+		<% end %>
 
-<%= p.submit "Edit Product" %>
+	<%= p.submit "Edit Product" %>
 <% end %>

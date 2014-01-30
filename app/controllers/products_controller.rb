@@ -11,10 +11,9 @@ class ProductsController < ApplicationController
 	def create
 		new_product = Product.create(product_params)
 		category_tags = params[:selected]
-		binding.pry
-		category_tags.each do |id|
-		new_product.categories << Category.find(id.to_i)
-		end
+			category_tags.each do |id|
+				new_product.categories << Category.find(id.to_i)
+			end
 		redirect_to product_path(new_product.id)
 	end
 
@@ -29,6 +28,7 @@ class ProductsController < ApplicationController
 		id = params[:id]
 		@product = Product.find(id)
 		@categories = Category.all
+		@category_product = @product.categories
 	end
 
 	def update
@@ -46,6 +46,7 @@ class ProductsController < ApplicationController
 	end
 
 	private
+	
 	def product_params
 		params.require(:product).permit(:name, :description)
 	end
